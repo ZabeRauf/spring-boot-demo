@@ -4,6 +4,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SitComCoach implements Coach {
+
+    public SitComCoach() {
+        System.out.println("In constructor: " + getClass().getSimpleName());
+    }
+
     @Override
     public String getDailyMonologue() {
         int temp = (Math.random() <= 0.5) ? 1 : 2;
