@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ActConfig {
-    @Bean
+    @Bean("musical")
     public Coach vocalCoach() {
         return new VocalCoach();
     }
