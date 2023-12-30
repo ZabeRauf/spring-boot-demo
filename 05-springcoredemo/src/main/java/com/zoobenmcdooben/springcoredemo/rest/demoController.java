@@ -10,9 +10,15 @@ public class demoController {
     // define a private field for the dependency
     private Coach myCoach;
 
-    // define a constructor for the dependency injection
-    @Autowired
+    // define a constructor for the dependency injection (constructor injection)
+    /*@Autowired
     public demoController(Coach theCoach) {
+        myCoach = theCoach;
+    }*/
+
+    // setter injection
+    @Autowired
+    public void setActingCoach(Coach theCoach) {
         myCoach = theCoach;
     }
 
@@ -22,7 +28,7 @@ public class demoController {
     }
 
     @GetMapping("/dailymonologue")
-    public String getDailyMonolgue() {
+    public String getDailyMonologue() {
         return myCoach.getDailyMonologue();
     }
 }
