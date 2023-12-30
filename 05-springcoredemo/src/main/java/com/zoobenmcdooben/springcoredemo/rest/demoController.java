@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class demoController {
     // define a private field for the dependency
     private Coach myCoach;
+    private Coach myOtherCoach;
 
     // define a constructor for the dependency injection (constructor injection)
     @Autowired
-    public demoController(@Qualifier("sceneStudyCoach") Coach theCoach) {
+    public demoController(
+            @Qualifier("sceneStudyCoach") Coach theCoach,
+            @Qualifier("sceneStudyCoach") Coach theOtherCoach) {
         System.out.println("In controller: " + getClass().getSimpleName());
         myCoach = theCoach;
+        myOtherCoach = theOtherCoach;
     }
 
     // setter injection
@@ -33,4 +37,10 @@ public class demoController {
     public String getDailyMonologue() {
         return myCoach.getDailyMonologue();
     }
+
+    @GetMapping("/check")
+    public String check() {
+        return "Comparing Beans: myCoach == myOtherCoach, " + (myCoach == myOtherCoach);
+    }
+
 }
