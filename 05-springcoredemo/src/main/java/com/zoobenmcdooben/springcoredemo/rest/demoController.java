@@ -2,6 +2,7 @@ package com.zoobenmcdooben.springcoredemo.rest;
 
 import com.zoobenmcdooben.springcoredemo.common.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,16 +12,16 @@ public class demoController {
     private Coach myCoach;
 
     // define a constructor for the dependency injection (constructor injection)
-    /*@Autowired
-    public demoController(Coach theCoach) {
-        myCoach = theCoach;
-    }*/
-
-    // setter injection
     @Autowired
-    public void setActingCoach(Coach theCoach) {
+    public demoController(@Qualifier("voiceOverCoach") Coach theCoach) {
         myCoach = theCoach;
     }
+
+    // setter injection
+    /*@Autowired
+    public void setActingCoach(Coach theCoach) {
+        myCoach = theCoach;
+    }*/
 
     @GetMapping("/")
     public String welcome() {
