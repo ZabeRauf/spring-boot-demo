@@ -1,7 +1,5 @@
 package com.zoobenmcdooben.springcoredemo.common;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
 
 // Lazy Initialization: Instead of creating all beans up front,
@@ -13,18 +11,6 @@ public class SceneStudyCoach implements Coach {
 
     public SceneStudyCoach() {
         System.out.println("In constructor: " + getClass().getSimpleName());
-    }
-
-    // define init method
-    @PostConstruct
-    public void doStartup() {
-        System.out.println("In doStartup: " + getClass().getSimpleName());
-    }
-
-    // define destroy method
-    @PreDestroy
-    public void doCleanup() {
-        System.out.println("In doCleanup: " + getClass().getSimpleName());
     }
 
     @Override
